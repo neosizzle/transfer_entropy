@@ -106,7 +106,7 @@ def transfer_entropy(X,Y,delay=1,gaussian_sigma=None):
 				if arg1 == 0.0: arg1 = float(1e-8)
 				if arg2 == 0.0: arg2 = float(1e-8)
 
-				term = pxyx2*np.log2(arg2) - pxyx2*np.log2(arg1) 
+				term = pxyx2*np.log2(arg1) - pxyx2*np.log2(arg2)
 				elements.append(term)
 
 	# Transfer Entropy
