@@ -49,7 +49,7 @@ def transfer_entropy(X,Y,delay=1,gaussian_sigma=None):
 				/ (2* stats.iqr(Y) / (len(Y)**(1.0/3))) )
 
 	# Definition of arrays of shape (D,N) to be transposed in histogramdd()
-	x3 = np.array([X[delay:],Y[:-delay],X[:-delay]])
+	x3 = np.array([X[delay:],Y[delay:],X[:-delay]])
 	x2 = np.array([X[delay:],Y[:-delay]])
 	x2_delay = np.array([X[delay:],X[:-delay]])
 
@@ -106,7 +106,7 @@ def transfer_entropy(X,Y,delay=1,gaussian_sigma=None):
 				if arg1 == 0.0: arg1 = float(1e-8)
 				if arg2 == 0.0: arg2 = float(1e-8)
 
-				term = pxyx2*np.log2(arg1) - pxyx2*np.log2(arg2)
+				term = pxyx2*np.log2(arg1) * -1 - pxyx2*np.log2(arg2) * -1
 				elements.append(term)
 
 	# Transfer Entropy
